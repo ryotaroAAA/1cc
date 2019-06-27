@@ -114,7 +114,6 @@ Node *term() {
 		"数値でも開きカッコでもないトークンです");
 }
 
-
 void tokenize() {
 	char *p = user_input;
 
@@ -161,18 +160,20 @@ void gen(Node *node){
 	switch (node->ty) {
 		case '+':
 			printf("	add rax, rdi\n");
+			break;
 		case '-':
 			printf("	sub rax, rdi\n");
 		case '*':
 			printf("	imul rdi\n");
+			break;
 		case '/':
 			printf("	cqo\n");
 			printf("	idiv rdi\n");
+			break;
 	}
 
 	printf("	push rax\n");
 }
-
 
 int main (int argc, char **argv) {
 	if (argc != 2) {
